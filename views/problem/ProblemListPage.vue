@@ -6,44 +6,37 @@
       </h1>
     </div>
     <div class="problem-list">
-      <problem-item-box
-        class="problem-box"
+      <problem-item
         v-for="problem in problems"
-        :key="problem.title"
-      >
-        <h3>{{problem.title}}</h3>
-        <v-progress-circular
-          :rotate="-90"
-          :size="50"
-          :width="3"
-          :value="problem.score / problem.maxScore * 100"
-        >
-          {{`${problem.score}/${problem.maxScore}`}}
-        </v-progress-circular>
-      </problem-item-box>
+        :key="problem.id"
+        :problem="problem"
+      />
     </div>
   </div>
 </template>
 
 <script>
-  import ProblemItemBox from "@/components/problem/ProblemItemBox";
-  import ProblemDetailWithStudentScore from "@/models/problem/ProblemDetailWithStudentScore";
+  import ProblemWithStudentScore from "@/pc/models/problem/ProblemWithStudentScore";
+  import ProblemItem from "@/pc/components/problem/ProblemItem";
 
   let problems = [
-    new ProblemDetailWithStudentScore(1, "1번 문제", 2, 10),
-    new ProblemDetailWithStudentScore(2, "2번 문제", 8, 12),
-    new ProblemDetailWithStudentScore(3, "3번 문제", 5, 15),
-    new ProblemDetailWithStudentScore(4, "4번 문제", 1, 20)
+    new ProblemWithStudentScore(1, "1번 문제", 30, 30),
+    new ProblemWithStudentScore(2, "2번 문제", 8, 12),
+    new ProblemWithStudentScore(3, "3번 문제", 5, 15),
+    new ProblemWithStudentScore(4, "4번 문제", 1, 20)
   ];
 
   export default {
     components: {
-      ProblemItemBox
+      ProblemItem
     },
     data() {
       return {
-        problems: problems
+        problems: []
       }
+    },
+    mounted() {
+      this.problems = problems;
     }
   }
 </script>
@@ -51,11 +44,5 @@
 <style scoped>
   .header {
     margin-bottom: 6rem;
-  }
-
-  .problem-box {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
   }
 </style>
