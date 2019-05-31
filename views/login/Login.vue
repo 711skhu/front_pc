@@ -33,7 +33,7 @@
     },
     computed: {
       isDisabledLogin() {
-        if(this.userId.length <= 0 || this.password.length <= 0)
+        if (this.userId.length <= 0 || this.password.length <= 0)
           return true;
       }
     }
@@ -44,12 +44,15 @@
   .content {
     margin: 0 35%;
   }
+
   .button {
     width: 100%
   }
+
   .padding-40p {
     padding: 0 40%;
   }
+
   a {
     text-decoration: none;
     transition: .06s;
@@ -58,20 +61,24 @@
     transition-timing-function: ease-in-out;
     transition-delay: initial;
   }
+
   .sign-up {
     font-size: 13px;
     text-align: center;
     color: #98A8B9;
   }
+
   .sign-up a {
     padding-left: 0.25rem;
     font-weight: 500;
     color: #263747;
     text-decoration: none;
   }
+
   .sign-up a:hover {
     color: #0078FF;
   }
+
   .sign-up a:after {
     transition-duration: 0.06s;
     transition-property: all;
@@ -82,6 +89,7 @@
     margin-left: 0.25rem;
     content: ' > ';
   }
+
   .sign-up a:hover:after {
     transform: translateX(0.25rem);
   }

@@ -65,8 +65,7 @@
         checked: 'false'
       }
     },
-    methods: {
-    },
+    methods: {},
     computed: {
       isDisabledRegister() {
         if (this.userId.length <= 0 || this.nickName.length <= 0 || this.email.length <= 0
@@ -75,7 +74,7 @@
         }
       },
       isPasswordCorrect() {
-        if(this.password === this.passwordCheck) {
+        if (this.password === this.passwordCheck) {
           return true;
         }
       }
