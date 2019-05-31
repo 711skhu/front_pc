@@ -23,7 +23,7 @@
     margin: 0;
   }
   .title {
-    padding: 2% 15% 0% 16%;
+    padding: 2% 15% 2% 16%;
     font-size: 25px;
     font-weight: 800;
   }
