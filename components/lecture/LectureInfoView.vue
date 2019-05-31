@@ -15,9 +15,7 @@
       <v-icon
         v-text="selectedIcon"
         size="10rem">
-
       </v-icon>
-
     </div>
   </div>
 </template>
@@ -38,7 +36,6 @@
         selectedIcon: '',
       }
     },
-
     created() {
       const idx = Math.floor(Math.random() * icons.length)
       this.selectedIcon = icons[idx]
@@ -56,7 +53,6 @@
 
   .container__left {
     flex: 3 3 auto;
-
   }
 
   .container__right {
@@ -64,11 +60,9 @@
     items-align: center;
   }
 
-
   .header {
     color: #7B1FA2;
   }
-
 
   .content {
     height: 100%;
