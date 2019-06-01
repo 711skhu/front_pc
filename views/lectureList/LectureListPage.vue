@@ -8,7 +8,7 @@
 </template>
 
 <script>
-  import HeaderMenu from '@/components/header/HeaderManu'
+  import HeaderMenu from '@/components/header/HeaderMenu'
   import LectureList from '@/components/lecture/LectureList'
 
   export default {
