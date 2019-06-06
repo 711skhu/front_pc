@@ -15,12 +15,19 @@
         <input v-model="email" type="email" placeholder="이메일">
       </div>
       <div class="field">
-        <label>비밀번호</label>
+        <label>기존 비밀번호</label>
         <input v-model="password" type="password" placeholder="비밀번호">
+        <div v-if="passwordIsBlank" class="ui pointing red basic label">
+          기존 비밀번호를 입력해주세요.
+        </div>
       </div>
       <div class="field">
-        <label>비밀번호 확인</label>
-        <input v-model="passwordCheck" type="password" placeholder="비밀번호 확인">
+        <label>새 비밀번호</label>
+        <input v-model="newPassword" type="password" placeholder="비밀번호">
+      </div>
+      <div class="field">
+        <label>새 비밀번호 확인</label>
+        <input v-model="newPasswordCheck" type="password" placeholder="비밀번호 확인">
         <div v-if="!isPasswordCorrect" class="ui pointing red basic label">
           비밀번호가 일치하지 않습니다.
         </div>
@@ -29,7 +36,7 @@
         <button
           type="submit"
           class="ui primary button"
-          :class="{disabled: isDisabledRegister}">
+          :class="{disabled: isDisabledEdit}">
           개인정보 수정
         </button>
       </div>
@@ -48,20 +55,28 @@
         nickName: '',
         email: '',
         password: '',
-        passwordCheck: '',
+        newPassword: '',
+        newPasswordCheck: '',
         isInputDisabled: true
       }
     },
     methods: {},
     computed: {
-      isDisabledRegister() {
+      // 버튼 활성화 여부
+      isDisabledEdit() {
         if (this.userId.length <= 0 || this.nickName.length <= 0 || this.email.length <= 0
-          || this.password.length <= 0 || this.passwordCheck.length <= 0  || !(this.password === this.passwordCheck)) {
+          || this.password.length <= 0  || !(this.newPassword === this.newPasswordCheck)) {
           return true;
         }
       },
+      //새 비밀번호와 새비밀번호 확인 일치 여부 확인
       isPasswordCorrect() {
-        if (this.password === this.passwordCheck) {
+        if (this.newPassword === this.newPasswordCheck) {
+          return true;
+        }
+      },
+      passwordIsBlank() {
+        if(this.password.length <= 0) {
           return true;
         }
       }
@@ -72,8 +87,6 @@
           this.userId = response.data.userId;
           this.nickName = response.data.nickName;
           this.email = response.data.email;
-          this.password = response.data.password;
-          this.passwordCheck = response.data.password;
           console.log(this.userId);
         })
     }
@@ -82,7 +95,7 @@
 
 <style scoped>
   .content {
-    margin: 0 35%;
+    margin: 5% 35%;
   }
   .button {
     width: 100%
