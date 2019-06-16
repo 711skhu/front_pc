@@ -5,8 +5,8 @@
     <h2>{{problem.title}}</h2>
     <v-progress-circular
       :rotate="-90"
-      :size="50"
-      :width="3"
+      :size="80"
+      :width="5"
       :value="problem.score / problem.maxScore * 100"
     >
       {{`${problem.score}/${problem.maxScore}`}}

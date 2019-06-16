@@ -119,7 +119,7 @@
       }
     },
     computed: {
-      currentProblem() {
+      editingProblem() {
         return this.problemDetails[this.activeProblemIndex];
       },
       currentLang() {
@@ -135,14 +135,14 @@
       },
       code: {
         get: function () {
-          let problem = this.currentProblem;
+          let problem = this.editingProblem;
           let lang = this.currentLang;
 
           return this.codes[problem.id + lang.name]
             || this.$set(this.codes, problem.id + lang.name, this.getCodeFromServer(problem, lang));
         },
         set: function (newValue) {
-          let problemId = this.currentProblem.id;
+          let problemId = this.editingProblem.id;
           let langName = this.currentLang.name;
 
           this.codes[problemId + langName] = newValue;
@@ -158,7 +158,7 @@
         return null || lang.initCode;
       },
       runCode() {
-        this.testCaseResults = this.getCodeResultFromServer(this.currentProblem, this.currentLang);
+        this.testCaseResults = this.getCodeResultFromServer(this.editingProblem, this.currentLang);
       },
       getCodeResultFromServer(problemDetail, lang) {
         this.pendingToGetCodeResultList.push(true);
