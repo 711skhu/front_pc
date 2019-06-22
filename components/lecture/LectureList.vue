@@ -31,7 +31,10 @@
     },
     methods: {
       apply: function () {
-        confirm('선택하신 강좌를 신청하시겠습니까?');
+        if(confirm('선택하신 강좌를 신청하시겠습니까?')) {
+          // axios : 강좌 insert api
+          alert('선택하신 강좌가 정상적으로 신청되었습니다.')
+        }
       }
     }
   }
