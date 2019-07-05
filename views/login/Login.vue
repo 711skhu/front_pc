@@ -1,30 +1,38 @@
 <template>
-  <div class="content">
-    <h2 class="padding-40p">로그인</h2>
-    <form class="ui form">
-      <div class="field">
-        <label>아이디</label>
-        <input v-model="userId" type="text" placeholder="아이디">
+  <div>
+    <header-menu></header-menu>
+    <div class="content">
+      <h2 class="padding-40p">로그인</h2>
+      <form class="ui form">
+        <div class="field">
+          <label>아이디</label>
+          <input v-model="userId" type="text" placeholder="아이디">
+        </div>
+        <div class="field">
+          <label>비밀번호</label>
+          <input v-model="password" type="password" placeholder="비밀번호">
+        </div>
+        <div class="field">
+          <button type="submit" class="ui primary button" :class="{disabled: isDisabledLogin}">
+            로그인
+          </button>
+        </div>
+      </form>
+      <br/>
+      <div class="ui sign-up">
+        아직 계정이 없으신가요? <a href="#">계정만들기</a>
       </div>
-      <div class="field">
-        <label>비밀번호</label>
-        <input v-model="password" type="password" placeholder="비밀번호">
-      </div>
-      <div class="field">
-        <button type="submit" class="ui primary button" :class="{disabled: isDisabledLogin}">
-          로그인
-        </button>
-      </div>
-    </form>
-    <br/>
-    <div class="ui sign-up">
-      아직 계정이 없으신가요? <a href="#">계정만들기</a>
     </div>
   </div>
 </template>
 
 <script>
+  import HeaderMenu from '@/components/header/HeaderMenu'
+
   export default {
+    components: {
+      HeaderMenu
+    },
     data() {
       return {
         userId: '',
